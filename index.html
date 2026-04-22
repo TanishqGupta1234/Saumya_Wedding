@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rahul & Saumya | Wedding Invite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Tangerine:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --text: #2d1a10;
+        --muted: #6f594c;
+        --gold: #c89a45;
+        --gold-dark: #8f6222;
+        --maroon: #7c1f2b;
+        --bg: #fbf5ed;
+        --bg2: #f2e6d7;
+        --line: rgba(200, 154, 69, 0.16);
+        --shadow: 0 18px 50px rgba(78, 42, 18, 0.1);
+        --radius: 28px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        color: var(--text);
+        background: linear-gradient(
+          180deg,
+          var(--bg2) 0%,
+          var(--bg) 35%,
+          #fffaf4 100%
+        );
+        overflow-x: hidden;
+      }
+      #loader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: linear-gradient(135deg, #fff7ed, #f7ebdd);
+        transition: opacity 0.8s ease, visibility 0.8s ease;
+      }
+      #loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .loader-ring {
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        border: 3px solid rgba(200, 154, 69, 0.18);
+        border-top-color: var(--gold-dark);
+        animation: spin 1.1s linear infinite;
+        margin-bottom: 18px;
+      }
+      .loader-title {
+        font-family: "Cinzel", serif;
+        font-weight: 800;
+        color: var(--gold-dark);
+        letter-spacing: 0.08em;
+      }
+      .loader-sub {
+        font-family: "Tangerine", cursive;
+        font-size: 2rem;
+        color: var(--maroon);
+        margin-top: 4px;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        backdrop-filter: blur(14px);
+        background: rgba(255, 248, 239, 0.82);
+        border-bottom: 1px solid rgba(200, 154, 69, 0.1);
+      }
+      .nav {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .brand {
+        font-family: "Cinzel", serif;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: var(--gold-dark);
+        font-size: 1rem;
+      }
+      .nav-links {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
+      .container {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 18px 16px 140px;
+      }
+      .hero {
+        margin-top: 14px;
+        border-radius: 32px;
+        padding: 16px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 252, 247, 0.98),
+          rgba(255, 245, 231, 0.95)
+        );
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+      .hero-copy {
+        padding: 4px 4px 8px;
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .ganesh-invocation {
+        text-align: center;
+        margin: 0 auto 16px;
+      }
+      .om-symbol {
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        line-height: 1;
+        color: var(--gold-dark);
+        font-family: "Cinzel", serif;
+        margin-bottom: 6px;
+        text-shadow: 0 4px 12px rgba(143, 98, 34, 0.08);
+      }
+      .ganesh-text {
+        font-size: clamp(1rem, 2.6vw, 1.35rem);
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: var(--maroon);
+        line-height: 1.4;
+      }
+      .hero-monogram-wrap {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 14px;
+      }
+      .monogram {
+        width: min(260px, 100%);
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+          circle at center,
+          rgba(255, 250, 243, 0.95),
+          rgba(255, 242, 224, 0.92)
+        );
+        border: 2px solid rgba(200, 154, 69, 0.26);
+        box-shadow: inset 0 0 0 10px rgba(200, 154, 69, 0.06),
+          0 16px 44px rgba(72, 39, 16, 0.1);
+      }
+      .monogram::before,
+      .monogram::after {
+        content: "";
+        position: absolute;
+        inset: 14px;
+        border-radius: 50%;
+        border: 1px dashed rgba(200, 154, 69, 0.28);
+      }
+      .monogram::after {
+        inset: 28px;
+        border-style: solid;
+        border-color: rgba(124, 31, 43, 0.1);
+      }
+      .mono-text {
+        text-align: center;
+        line-height: 1;
+      }
+      .mono-script {
+        font-family: "Tangerine", cursive;
+        font-size: clamp(3rem, 6vw, 4rem);
+        color: var(--maroon);
+        margin-bottom: 8px;
+      }
+      .mono-main {
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 800;
+        color: var(--gold-dark);
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 4px 0 0;
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.55rem, 4vw, 3rem);
+        line-height: 1.12;
+        color: #3a2416;
+      }
+      .hero-couple {
+        margin-top: 8px;
+        font-family: "Tangerine", cursive;
+        font-size: clamp(2.25rem, 4.6vw, 3.8rem);
+        line-height: 1;
+        color: var(--maroon);
+      }
+      .hero-text {
+        margin: 10px auto 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        max-width: 620px;
+        line-height: 1.65;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+        justify-content: center;
+      }
+      .btn {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 0.84rem;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        box-shadow: 0 10px 24px rgba(143, 98, 34, 0.18);
+      }
+      .btn-secondary {
+        color: var(--gold-dark);
+        background: rgba(200, 154, 69, 0.1);
+        border: 1px solid rgba(200, 154, 69, 0.18);
+      }
+      .countdown-wrap {
+        margin-top: 16px;
+        max-width: 680px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .countdown {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(80px, 1fr));
+        gap: 12px;
+      }
+      .count-card {
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 14px 10px;
+        text-align: center;
+      }
+      .count-num {
+        font-size: clamp(1.35rem, 4vw, 2.1rem);
+        font-weight: 800;
+        color: var(--gold-dark);
+      }
+      .count-label {
+        margin-top: 6px;
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+      .pill {
+        display: inline-block;
+        margin-top: 12px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(124, 31, 43, 0.06);
+        color: var(--maroon);
+        font-weight: 700;
+        font-size: 0.82rem;
+      }
+      .section {
+        margin-top: 34px;
+      }
+      .section-title {
+        margin: 0 0 10px;
+        text-align: center;
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.5rem, 4vw, 2.3rem);
+        color: #3b2618;
+      }
+      .section-sub {
+        text-align: center;
+        color: var(--muted);
+        max-width: 760px;
+        margin: 0 auto 14px;
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+      .card {
+        background: rgba(255, 250, 243, 0.94);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 800;
+        color: var(--gold-dark);
+        background: rgba(200, 154, 69, 0.11);
+        margin-bottom: 14px;
+      }
+      .event-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 18px;
+      }
+      .two-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .featured {
+        border-left: 5px solid var(--maroon);
+      }
+      .event-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 0;
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: #362214;
+      }
+      .event-meta {
+        margin: 10px 0 12px;
+        color: var(--muted);
+        font-size: 0.93rem;
+        line-height: 1.6;
+      }
+      .desc {
+        margin: 8px 0;
+        color: var(--muted);
+        font-size: 0.94rem;
+        line-height: 1.65;
+      }
+      .label {
+        font-weight: 800;
+        color: var(--text);
+      }
+      .map-link {
+        display: inline-block;
+        margin-top: 12px;
+        text-decoration: none;
+        color: #fff;
+        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        padding: 10px 14px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      .sticky-actions {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 10px;
+        z-index: 9999;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: rgba(255, 248, 239, 0.88);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(200, 154, 69, 0.14);
+        padding: 8px;
+        border-radius: 16px;
+        box-shadow: 0 10px 24px rgba(78, 42, 18, 0.1);
+        width: min(92%, 500px);
+        transition: transform 0.28s ease, opacity 0.28s ease;
+        opacity: 1;
+      }
+      .sticky-actions.hidden {
+        transform: translateX(-50%) translateY(110%);
+        opacity: 0;
+        pointer-events: none;
+      }
+      .scroll-top {
+        min-width: 44px;
+        font-size: 1rem;
+      }
+
+      .scroll-hint {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+      .scroll-hint-arrow {
+        font-size: 1.25rem;
+        color: var(--gold-dark);
+        animation: bounceDown 1.8s infinite;
+      }
+      @keyframes bounceDown {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(6px);
+        }
+        60% {
+          transform: translateY(3px);
+        }
+      }
+      .end-note {
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .end-note::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            circle at 20% 20%,
+            rgba(200, 154, 69, 0.05),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(124, 31, 43, 0.04),
+            transparent 28%
+          );
+        pointer-events: none;
+      }
+      .end-note-content {
+        position: relative;
+        z-index: 1;
+        max-width: 760px;
+        margin: 0 auto;
+      }
+      .end-note-title {
+        margin: 0;
+        font-family: "Cinzel", serif;
+        font-size: clamp(1.4rem, 4vw, 2.2rem);
+        color: #3b2618;
+      }
+      .end-note-script {
+        margin: 8px 0 10px;
+        font-family: "Tangerine", cursive;
+        font-size: clamp(2.3rem, 5vw, 3.8rem);
+        line-height: 1;
+        color: var(--maroon);
+      }
+      .end-note-text {
+        margin: 0 auto;
+        color: var(--muted);
+        max-width: 620px;
+        line-height: 1.8;
+        font-size: 0.96rem;
+      }
+      .end-actions {
+        margin-top: 18px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .scroll-progress {
+        position: fixed;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 6px;
+        height: 180px;
+        border-radius: 999px;
+        background: rgba(200, 154, 69, 0.1);
+        z-index: 9998;
+        overflow: hidden;
+        box-shadow: inset 0 0 0 1px rgba(200, 154, 69, 0.08);
+      }
+      .scroll-progress-fill {
+        width: 100%;
+        height: 0%;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--gold), var(--gold-dark));
+        transition: height 0.12s linear;
+      }
+      @media (max-width: 768px) {
+        .scroll-progress {
+          right: 8px;
+          width: 5px;
+          height: 120px;
+          opacity: 0.9;
+        }
+      }
+
+      .icon-only-bar {
+        width: auto !important;
+        min-width: unset;
+        padding: 8px 10px;
+        gap: 8px;
+      }
+      .icon-btn {
+        width: 42px;
+        height: 42px;
+        padding: 0 !important;
+        border-radius: 50%;
+        font-size: 1.05rem;
+        flex: 0 0 42px !important;
+      }
+
+      .call-green {
+        background: linear-gradient(135deg, #22c55e, #15803d) !important;
+        color: #fff !important;
+        box-shadow: 0 8px 18px rgba(34, 197, 94, 0.22) !important;
+        border: none !important;
+      }
+      .whatsapp-real {
+        background: #25d366 !important;
+        color: #fff !important;
+        border: none !important;
+        box-shadow: 0 8px 18px rgba(37, 211, 102, 0.22) !important;
+        font-size: 0 !important;
+        position: relative;
+      }
+      .whatsapp-real::before {
+        content: "";
+        width: 22px;
+        height: 22px;
+        display: block;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path fill='white' d='M19.11 17.34c-.29-.15-1.7-.84-1.96-.93-.26-.1-.45-.15-.64.15-.19.29-.74.93-.91 1.12-.17.19-.34.22-.63.08-.29-.15-1.24-.46-2.36-1.47-.87-.77-1.46-1.72-1.63-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.43-.51.14-.17.19-.29.29-.49.1-.19.05-.37-.02-.51-.08-.15-.64-1.55-.88-2.12-.23-.55-.47-.47-.64-.48h-.55c-.19 0-.49.07-.74.34-.26.29-.98.96-.98 2.33s1 2.7 1.14 2.89c.15.19 1.97 3.01 4.77 4.22.67.29 1.2.47 1.61.6.68.22 1.3.19 1.79.12.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34Z'/><path fill='white' d='M16.02 3.2c-6.97 0-12.62 5.66-12.62 12.63 0 2.21.57 4.36 1.66 6.26L3.2 28.8l6.9-1.81a12.57 12.57 0 0 0 5.92 1.5h.01c6.97 0 12.63-5.66 12.63-12.63S22.99 3.2 16.02 3.2Zm0 22.96h-.01a10.4 10.4 0 0 1-5.31-1.46l-.38-.23-4.1 1.08 1.1-4-.25-.41a10.34 10.34 0 0 1-1.59-5.5c0-5.74 4.67-10.41 10.42-10.41 2.79 0 5.41 1.08 7.38 3.05a10.35 10.35 0 0 1 3.04 7.37c0 5.75-4.67 10.42-10.4 10.42Z'/></svg>");
+      }
+
+      @media (max-width: 980px) {
+        .two-grid {
+          grid-template-columns: 1fr;
+        }
+        .countdown-wrap {
+          max-width: none;
+        }
+      }
+      @media (max-width: 640px) {
+        .topbar {
+          position: sticky;
+        }
+        .nav {
+          justify-content: center;
+          padding: 10px 12px;
+        }
+        .brand {
+          font-size: 0.9rem;
+        }
+        .nav-links {
+          justify-content: center;
+          gap: 6px;
+        }
+        .countdown {
+          grid-template-columns: repeat(2, minmax(96px, 1fr));
+          gap: 10px;
+        }
+        .hero {
+          padding: 14px 12px;
+        }
+        .card {
+          padding: 16px;
+        }
+        .sticky-actions .btn {
+          flex: 0 0 auto;
+        }
+        .scroll-top {
+          flex: 0 0 42px;
+        }
+        .monogram {
+          max-width: 240px;
+        }
+        .scroll-progress {
+          opacity: 0.75;
+        }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <div class="scroll-progress" aria-hidden="true">
+      <div class="scroll-progress-fill" id="scrollProgressFill"></div>
+    </div>
+    <div id="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-title">SAUMYA ✦ RAHUL</div>
+      <div class="loader-sub">A Celebration Awaits</div>
+    </div>
+    <div class="topbar">
+      <div class="nav">
+        <div class="brand">SAUMYA ✦ RAHUL</div>
+        <div class="nav-links">
+          <a href="#events">Events</a>
+          <a href="#stay">Stay</a>
+          <a href="#photos">Photos</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="ganesh-invocation">
+            <div class="om-symbol">ॐ</div>
+            <div class="ganesh-text">॥ श्री गणेशाय नमः ॥</div>
+          </div>
+          <div class="hero-monogram-wrap">
+            <div class="monogram">
+              <div class="mono-text">
+                <div class="mono-script">Together</div>
+                <div class="mono-main">S ✦ R</div>
+              </div>
+            </div>
+          </div>
+          <h1>🎫 You’re on the VIP Guest List</h1>
+          <div class="hero-couple">Saumya &amp; Rahul</div>
+          <p class="hero-text">
+            Shaadi ka countdown officially ON ho chuka hai! 💃🕺 Vibe wale
+            videos WhatsApp par already ghoom rahe hain — ab bas outfits final
+            karo, dance steps revise karo aur “rishtedaar spotting mode”
+            activate karo 😂 Ab koi kaam-vam nahi… sirf khana, naachna aur
+            “shaadi mein kya pehnu” ka stress lena hai 😎✨ ✨
+          </p>
+          <div class="hero-btns">
+            <a class="btn btn-primary" href="#events">View Wedding Line-Up</a>
+          </div>
+          <div class="scroll-hint">
+            <div>Scroll to explore ↓</div>
+            <div class="scroll-hint-arrow">↓</div>
+          </div>
+          <div class="countdown-wrap">
+            <div class="countdown">
+              <div class="count-card">
+                <div class="count-num" id="days">--</div>
+                <div class="count-label">Days</div>
+              </div>
+              <div class="count-card">
+                <div class="count-num" id="hours">--</div>
+                <div class="count-label">Hours</div>
+              </div>
+              <div class="count-card">
+                <div class="count-num" id="minutes">--</div>
+                <div class="count-label">Minutes</div>
+              </div>
+              <div class="count-card">
+                <div class="count-num" id="seconds">--</div>
+                <div class="count-label">Seconds</div>
+              </div>
+            </div>
+            <div class="pill">Countdown to 28 April • 6:00 PM</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="invite">
+        <h2 class="section-title">💌 A Special Invite</h2>
+        <p class="section-sub">
+          Aap sab humare liye sirf guests nahi ho — aap hi toh asli wedding
+          squad ho. Bas best vibe ke saath aana, baaki Noida mein milkar history
+          banayenge. ✨
+        </p>
+        <div class="card">
+          <div class="badge">Personal Note</div>
+          <h3 class="event-title">Wedding Squad, This One’s For You ✨</h3>
+          <p class="desc">
+            Bas ek kaam hai — har function mein full attendance, full energy,
+            aur full vibe. Baaki sab hum milkar yaadgaar bana denge. ❤️
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="events">
+        <h2 class="section-title">🎥 Wedding Line-Up &amp; Dress Code</h2>
+        <p class="section-sub">
+          Har function ka apna mood aur apni vibe hai. Vibe videos WhatsApp par
+          already share kiye ja chuke hain — yahan final game plan hai.
+        </p>
+        <div class="event-grid">
+          <article class="card">
+            <div class="badge">28 April • 6:00 PM</div>
+            <h3 class="event-title">💍 Ring Ceremony &amp; Sangeet</h3>
+            <div class="event-meta">
+              <span class="label">Venue:</span> Prince Hall, Golden Dreams
+              Banquet, Sector 51, Noida
+            </div>
+            <p class="desc">
+              <span class="label">Vibe:</span> Classy &amp; Sharp.
+            </p>
+            <p class="desc">
+              <span class="label">Dress Code:</span> Western ho ya Indian — bas
+              classy, stylish aur standout lagna chahiye. ✨
+            </p>
+            <a
+              class="map-link"
+              href="https://maps.app.goo.gl/upjx7wfmgmxVRvA77"
+              target="_blank"
+              >📍 Open Venue Map</a
+            >
+          </article>
+          <article class="card">
+            <div class="badge">29 April • 10:00 AM</div>
+            <h3 class="event-title">💛 Haldi Phool n Pool Party</h3>
+            <div class="event-meta">
+              <span class="label">Venue:</span> Krishna Apra Residency, Sector
+              61, Noida
+            </div>
+            <p class="desc">
+              <span class="label">Vibe:</span> Sun-kissed, splashy &amp; full-on
+              messy.
+            </p>
+            <p class="desc">
+              <span class="label">Dress Code:</span> Dulhanji ke clear orders
+              hain — sab Yellow mein hi nazar aane chahiye! 💛
+            </p>
+            <p class="desc">
+              <span class="label">Pro Tip:</span> Sunglasses rkh lena, dhoop
+              apni charam seema pe hogi... SPF-VSPF bhi lga lena, fir baad mein
+              mujhe mat bolna tanning ho gayi — although main khud nahi
+              lagaunga. 😎☀️
+            </p>
+            <a
+              class="map-link"
+              href="https://maps.app.goo.gl/LAq1KyJFkErUkDdJ6"
+              target="_blank"
+              >📍 Open Venue Map</a
+            >
+          </article>
+          <article class="card">
+            <div class="badge">29 April • 6:00 PM</div>
+            <h3 class="event-title">🤚 Mehendi</h3>
+            <div class="event-meta">
+              <span class="label">Venue:</span> Diamond Crown Sector 51, Noida
+            </div>
+            <p class="desc">
+              <span class="label">Vibe:</span> Subtle &amp; Chill.
+            </p>
+            <p class="desc">
+              <span class="label">Dress Code:</span> Green pehen lo toh aur bhi
+              badhiya, warna jo mann kare — bas subtle aur elegant lagna
+              chahiye. ✨
+            </p>
+            <a
+              class="map-link"
+              href="https://maps.app.goo.gl/upjx7wfmgmxVRvA77"
+              target="_blank"
+              >📍 Open Venue Map</a
+            >
+          </article>
+          <article class="card featured">
+            <div class="badge">30 April • 7:00 PM</div>
+            <h3 class="event-title">👑 The Big Day (Shaadi)</h3>
+            <div class="event-meta">
+              <span class="label">Venue:</span> Royal Hall, Diamond Crown
+              Banquet, Sector 51, Noida
+            </div>
+            <p class="desc">
+              <span class="label">Vibe:</span> The Grand Finale.
+            </p>
+            <p class="desc">
+              <span class="label">Dress Code:</span> Kill it with your looks —
+              kya pata koi mil jaye... (yeh offer sirf singles ke liye valid
+              hai! 😂)
+            </p>
+            <p class="desc">
+              <span class="label">Reception of Barat:</span> 7:00 PM at Royal
+              Hall, Diamond Crown Banquet, Sector 51, Noida
+            </p>
+            <a
+              class="map-link"
+              href="https://maps.app.goo.gl/upjx7wfmgmxVRvA77"
+              target="_blank"
+              >📍 Open Wedding Venue Map</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="stay">
+        <h2 class="section-title">🏨 Stay &amp; Base Camp</h2>
+        <div class="two-grid">
+          <article class="card">
+            <div class="badge">For Outstation Guests</div>
+            <h3 class="event-title">Stay is arranged at Diamond crown</h3>
+            <p class="desc">
+              If you are travelling, your stay has been arranged at
+              <span class="label">Diamond Crown, Sector 51, Noida</span>.
+            </p>
+            <p class="desc">
+              Your rooms have already been booked for a comfortable stay. Once
+              you arrive, please head to the hotel and collect your room keys
+              from the front desk.
+            </p>
+            <a
+              class="map-link"
+              href="https://maps.app.goo.gl/upjx7wfmgmxVRvA77"
+              target="_blank"
+              >🏨 Open Stay Location</a
+            >
+          </article>
+          <article class="card">
+            <div class="badge">Travel Note</div>
+            <h3 class="event-title">Confirm Travel by 25 April</h3>
+            <p class="desc">
+              Please share your expected arrival time in Noida by 25 April, so
+              that we can plan everything smoothly and be well prepared to
+              receive you.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <h2 class="section-title">📞 Help &amp; Coordination</h2>
+        <div class="two-grid">
+          <article class="card">
+            <div class="badge">Need Anything?</div>
+            <h3 class="event-title">Mera chota Bhai (Majdoor) 😎</h3>
+            <p class="desc">
+              <span class="label">Contact:</span> Shree Shree Tanishq Ji
+            </p>
+            <p class="desc">
+              <span class="label">Phone:</span>
+              <a
+                href="tel:+916398234043"
+                style="color: inherit; text-decoration: none; font-weight: 800"
+                >9674385130</a
+              >
+            </p>
+          </article>
+          <article class="card">
+            <div class="badge">Vibe Videos</div>
+            <h3 class="event-title">WhatsApp Vibe Check Sorted</h3>
+            <p class="desc">
+              All vibe videos for each function have already been shared on
+              WhatsApp — just tap, watch, and arrive in the right mood. 🎥✨
+            </p>
+          </article>
+        </div>
+      </section>
+      <section class="section" id="photos">
+        <h2 class="section-title">📸 Add Your Photos &amp; Videos</h2>
+        <p class="section-sub">
+          Captured some beautiful moments? Upload your photos and videos here so
+          we can relive all the laughter, madness, and memories together. ✨
+        </p>
+        <div class="two-grid">
+          <article class="card">
+            <div class="badge">Google Photos Album</div>
+            <h3 class="event-title">Upload to Google Photos</h3>
+            <p class="desc">
+              Use the shared Google Photos album to add your candid clicks,
+              reels, and all the best shaadi moments. 📷
+            </p>
+            <a
+              class="map-link"
+              href="https://photos.app.goo.gl/yGFkSRM2L6tk6sWA8"
+              target="_blank"
+              >📸 Add to Google Photos</a
+            >
+          </article>
+          <article class="card">
+            <div class="badge">OneDrive Folder</div>
+            <h3 class="event-title">Upload to OneDrive</h3>
+            <p class="desc">
+              You can also upload all your photos and videos to the shared
+              OneDrive folder — full-quality memories are always welcome. 🎥
+            </p>
+            <a
+              class="map-link"
+              href="https://1drv.ms/f/c/7458198a49c6fcd1/IgAoxr9UpBeeSbD99-78mjszAf9gdyy8ueMT_WPvrreiWrE"
+              target="_blank"
+              >☁️ Add to OneDrive</a
+            >
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="ending">
+        <div class="card end-note">
+          <div class="end-note-content">
+            <div class="badge">That’s All For Now</div>
+            <h2 class="end-note-title">See You in Noida 💛</h2>
+            <div class="end-note-script">
+              Baaki sab milkar celebrate karenge
+            </div>
+            <p class="end-note-text">
+              Bas itna hi for now — baaki saari masti Noida mein milkar karenge.
+              See you soon! ✨
+            </p>
+            <div class="end-actions">
+              <a class="btn btn-primary" href="#top">⬆️ Back to Top</a>
+              <a class="btn btn-secondary" href="#photos">📸 Add Photos</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="sticky-actions icon-only-bar">
+      <a
+        class="btn btn-primary icon-btn call-green"
+        href="tel:+919674385130"
+        title="Call Kunal Bhaiya"
+        aria-label="Call Kunal Bhaiya"
+        >📞</a
+      >
+      <a
+        class="btn btn-secondary icon-btn whatsapp-real"
+        href="https://wa.me/919674385130?text=Hi%20Kunal%20Bhaiya"
+        target="_blank"
+        title="WhatsApp Kunal Bhaiya"
+        aria-label="WhatsApp Kunal Bhaiya"
+      ></a>
+      <a
+        class="btn btn-primary scroll-top icon-btn"
+        href="#top"
+        title="Back to top"
+        aria-label="Back to top"
+        >⬆️</a
+      >
+    </div>
+
+    <script>
+      window.addEventListener("load", () => {
+        setTimeout(
+          () => document.getElementById("loader").classList.add("hidden"),
+          1000
+        );
+      });
+      const targetDate = new Date("2026-04-28T18:00:00+05:30").getTime();
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+        if (diff <= 0) {
+          ["days", "hours", "minutes", "seconds"].forEach(
+            (id) => (document.getElementById(id).textContent = "00")
+          );
+          return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        document.getElementById("days").textContent = String(days).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("hours").textContent = String(hours).padStart(
+          2,
+          "0"
+        );
+        document.getElementById("minutes").textContent = String(
+          minutes
+        ).padStart(2, "0");
+        document.getElementById("seconds").textContent = String(
+          seconds
+        ).padStart(2, "0");
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      const progressFill = document.getElementById("scrollProgressFill");
+      function updateScrollProgress() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressFill.style.height = Math.min(100, Math.max(0, progress)) + "%";
+      }
+      window.addEventListener("scroll", updateScrollProgress, {
+        passive: true,
+      });
+      window.addEventListener("load", updateScrollProgress);
+      updateScrollProgress();
+
+      const stickyBar = document.querySelector(".sticky-actions");
+      let lastScrollY = window.scrollY;
+      let hideBarTimer;
+
+      function showStickyBar() {
+        stickyBar.classList.remove("hidden");
+      }
+
+      function hideStickyBar() {
+        stickyBar.classList.add("hidden");
+      }
+
+      function handleStickyBar() {
+        const currentY = window.scrollY || document.documentElement.scrollTop;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const nearBottom = currentY > docHeight - 220;
+        const nearTop = currentY < 80;
+
+        if (nearTop || nearBottom) {
+          showStickyBar();
+        } else if (currentY > lastScrollY + 8) {
+          hideStickyBar(); // scrolling down
+        } else if (currentY < lastScrollY - 8) {
+          showStickyBar(); // scrolling up
+        }
+
+        lastScrollY = currentY;
+
+        clearTimeout(hideBarTimer);
+        hideBarTimer = setTimeout(() => {
+          if (!nearTop && !nearBottom) hideStickyBar();
+        }, 2200);
+      }
+
+      window.addEventListener("scroll", handleStickyBar, { passive: true });
+      window.addEventListener("load", () => {
+        showStickyBar();
+        setTimeout(() => {
+          if ((window.scrollY || document.documentElement.scrollTop) > 80)
+            hideStickyBar();
+        }, 2200);
+      });
+    </script>
+  </body>
+</html>
